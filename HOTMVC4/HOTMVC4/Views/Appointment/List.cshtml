@@ -1,0 +1,35 @@
+﻿@model List<Appointment>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Appointments";
+}
+
+
+<h1>Appointments</h1>
+<h3>Schedual Appointments</h3>
+<a asp-action="New" asp-controller="Customer" class="btn btn-primary fw-semibold">New Customer</a>
+<a asp-action="Existing" asp-controller="Customer" class="btn btn-primary fw-semibold">Existing Customer</a>
+<hr />
+<div class="w-50">
+    <table class="table table-secondary mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>#</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model)
+            {
+                <tr class="text-center">
+                    <td class="col-2">@appointment.AppointmentId</td>
+                    <td class="col-2">@appointment.dateTime.ToShortDateString()</td>
+                    <td class="col-2">@appointment.dateTime.ToShortTimeString()</td>
+                    <td class="col-2">@appointment.Customer.Username</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

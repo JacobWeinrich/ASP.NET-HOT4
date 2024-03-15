@@ -1,0 +1,31 @@
+﻿@model List<Customer>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Existing Customer Search";
+}
+
+
+<h1>Existing Customer Search</h1>
+<a asp-action="New" asp-controller="customer" class="btn btn-primary fw-semibold">New Customer?</a>
+
+<div class="w-50">
+    <table class="table table-secondary mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>Name</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr class="text-center">
+                    <td class="col-2">@customer.Username</td>
+                    <td class="col-1">
+                        <a class="btn btn-primary fw-semibold" asp-action="New" asp-controller="Appointment" asp-route-id="@customer.CustomerId">Select</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

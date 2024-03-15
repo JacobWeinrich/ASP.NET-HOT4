@@ -1,0 +1,10 @@
+﻿@{ 
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center">
+    <h1>Welcome Admin</h1>
+    <a class="btn btn-danger fw-bold" asp-controller="Appointment" asp-action="Index" asp-area="Admin">Appointment Manager</a>
+    <a class="btn btn-primary fw-bold" asp-controller="Home" asp-action="Index" asp-area="">Customer View</a>
+</div>

@@ -1,0 +1,30 @@
+﻿@model Appointment
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "New Appointment";
+}
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>Edit Appointment</h1>
+
+
+<form asp-action="Edit" method="post" class="mt-2 bg-dark-subtle p-2">
+    <div asp-validation-summary="All" class="fw-bold text-danger"></div>
+    <div class="row">
+        <span class="fw-bold text-primary">(All Appointments must be placed 1 day in advance!)</span>
+        <div class="col-1 justify-content-center d-flex">
+            <label asp-for="dateTime" class="form-label fw-bold align-self-center">Date Time:</label>
+        </div>
+        <div class="col-4">
+            <input asp-for="dateTime" placeholder="Customer Name" class="form-control" />
+        </div>
+    </div>
+    <input type="hidden" asp-for="CustomerId" />
+    <input type="hidden" asp-for="AppointmentId"  />
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>

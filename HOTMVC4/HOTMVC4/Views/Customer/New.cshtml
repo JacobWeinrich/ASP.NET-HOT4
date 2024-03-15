@@ -1,0 +1,35 @@
+﻿@model Customer
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "New Customer";
+}
+
+@section scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>New Customer</h1>
+<a asp-action="Existing" asp-controller="customer" class="btn btn-primary fw-semibold">Existing Customer</a>
+
+<form asp-action="new" method="post" class="mt-2 bg-dark-subtle p-2">
+    <div asp-validation-summary="All" class="fw-bold text-danger"></div>
+    <div class="row">
+        <div class="col-1 justify-content-center d-flex">
+            <label asp-for="Username" class="form-label fw-bold align-self-center">Name:</label>
+        </div>
+        <div class="col-4">
+            <input asp-for="Username" placeholder="Customer Name" class="form-control" />
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-1 justify-content-center d-flex">
+            <label asp-for="PhoneNumber" class="form-label fw-bold align-self-center">Phone#:</label>
+        </div>
+        <div class="col-4">
+            <input asp-for="PhoneNumber" placeholder="(xxx) xxx-xxxx" class="form-control" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+</form>

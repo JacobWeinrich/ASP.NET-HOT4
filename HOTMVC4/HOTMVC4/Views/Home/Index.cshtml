@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    if (ViewBag.message != null) {
+        <div class="bg-info p-2 display-4 fw-semibold text-center">
+            @ViewBag.message
+        </div>
+    }
+ }
+
+<div class="text-center">
+    <h1 class="display-4">Welcome Customer</h1>
+    <a asp-action="New" asp-controller="customer" class="btn btn-primary">New Customer</a>
+    <a asp-action="Existing" asp-controller="customer" class="btn btn-info">Existing Customer</a>
+</div>

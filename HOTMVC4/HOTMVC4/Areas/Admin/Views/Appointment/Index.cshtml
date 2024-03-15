@@ -1,0 +1,39 @@
+﻿@model List<Appointment>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Appointments manager";
+}
+
+
+<h1>Appointments</h1>
+<hr />
+<div class="w-50">
+    <table class="table table-secondary mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>#</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appointment in Model)
+            {
+                <tr class="text-center">
+                    <td class="col-2">@appointment.AppointmentId</td>
+                    <td class="col-2">@appointment.dateTime.ToShortDateString()</td>
+                    <td class="col-2">@appointment.dateTime.ToShortTimeString()</td>
+                    <td class="col-2">@appointment.Customer.Username</td>
+                    <td class="col-2">
+                        <div class="d-flex">
+                            <a class="btn btn-warning me-2" asp-action="Edit" asp-controller="Appointment" asp-area="Admin">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-controller="Appointment" asp-area="Admin">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
