@@ -29,6 +29,7 @@ namespace HOTMVC4.Areas.Admin.Controllers
 
             if (appointment == null)
             {
+                TempData["message"] = "Appointment not found";
                 return RedirectToAction("Index", "Appointment");
             } else
             {
@@ -44,9 +45,33 @@ namespace HOTMVC4.Areas.Admin.Controllers
             {
                 _context.Appointments.Update(appointment);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["message"] = $"Appointment Id: {appointment.AppointmentId} Updated";
+                return RedirectToAction("Index", "Appointment");
             }
             return View(appointment);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            Appointment appointment = _context.Appointments.Include(c => c.Customer).FirstOrDefault(a => a.AppointmentId == id)!;
+            if (appointment == null)
+            {
+                TempData["message"] = "Appointment not found";
+                return RedirectToAction("Index", "Appointment");
+            } else
+            {
+                return View(appointment);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Appointment appointment)
+        {
+            _context.Appointments.Remove(appointment);
+            _context.SaveChanges();
+            TempData["message"] = $"Appointment Id: {appointment.AppointmentId} Deleted";
+            return RedirectToAction("Index", "Appointment");
         }
     }
 }

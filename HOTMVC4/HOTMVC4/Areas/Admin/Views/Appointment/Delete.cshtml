@@ -1,0 +1,32 @@
+﻿@model Appointment
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Delete Appointment";
+}
+
+<h2>Delete Appointment</h2>
+<div class="w-50">
+    <table class="table table-secondary mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>#</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr class="text-center">
+                    <td class="col-2">@Model.AppointmentId</td>
+                    <td class="col-2">@Model.dateTime.ToShortDateString()</td>
+                    <td class="col-2">@Model.dateTime.ToShortTimeString()</td>
+                    <td class="col-2">@Model.Customer.Username</td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+
+<form asp-action="Delete" method="post">
+    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+    <a asp-action="Index" asp-area="Admin" class="btn btn-secondary mt-2">Cancel</a>
+</form>

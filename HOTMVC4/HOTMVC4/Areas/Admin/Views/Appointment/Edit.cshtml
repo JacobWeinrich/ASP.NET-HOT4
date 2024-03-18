@@ -12,6 +12,26 @@
 
 <h1>Edit Appointment</h1>
 
+<div class="w-50">
+    <table class="table table-secondary mt-2">
+        <thead>
+            <tr class="text-center">
+                <th>#</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center">
+                <td class="col-2">@Model.AppointmentId</td>
+                <td class="col-2">@Model.dateTime.ToShortDateString()</td>
+                <td class="col-2">@Model.dateTime.ToShortTimeString()</td>
+                <td class="col-2">@Model.Customer.Username</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <form asp-action="Edit" method="post" class="mt-2 bg-dark-subtle p-2">
     <div asp-validation-summary="All" class="fw-bold text-danger"></div>
@@ -24,7 +44,8 @@
             <input asp-for="dateTime" placeholder="Customer Name" class="form-control" />
         </div>
     </div>
-    <input type="hidden" asp-for="CustomerId" />
+    <input type="hidden" asp-for="CustomerId"  />
     <input type="hidden" asp-for="AppointmentId"  />
     <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    <a asp-action="Index" asp-area="Admin" class="btn btn-secondary mt-2">Cancel</a>
 </form>

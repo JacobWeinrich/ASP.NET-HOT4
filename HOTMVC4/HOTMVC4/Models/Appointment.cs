@@ -9,7 +9,7 @@ namespace HOTMVC4.Models
         public int AppointmentId { get; set; }
 
         [Required(ErrorMessage = "Appointment Date is Required")]
-        [Remote("CheckAppointmentDate", "Validation")]
+        [Remote("CheckAppointmentDate", "Validation", areaName: "")]
         public DateTime dateTime { get; set; }
 
         [Required(ErrorMessage = "Customer is Required")]
